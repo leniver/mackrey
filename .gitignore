@@ -1,0 +1,6 @@
+/target
+**/*.rs.bk
+*.pdb
+
+# Saved macros live next to the built exe; don't track the dev library
+/macros

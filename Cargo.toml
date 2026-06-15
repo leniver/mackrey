@@ -1,0 +1,29 @@
+[package]
+name = "mackrey"
+version = "0.1.0"
+edition = "2021"
+description = "Record and replay keyboard + mouse macros with timing (Windows)"
+
+[[bin]]
+name = "mackrey"
+path = "src/main.rs"
+
+[dependencies]
+eframe = { version = "0.29", default-features = false, features = ["default_fonts", "glow"] }
+egui = "0.29"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[target.'cfg(windows)'.dependencies.windows]
+version = "0.58"
+features = [
+    "Win32_Foundation",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Threading",
+]
+
+# Windows GUI app: no console window on release
+[profile.release]
+opt-level = 2
